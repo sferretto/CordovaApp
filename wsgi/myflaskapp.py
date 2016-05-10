@@ -4,9 +4,9 @@ from flask import Flask
 from flask import request, send_from_directory
 from flask import render_template
 from flask import jsonify
-from flask.ext.cors import CORS
+#from flask.ext.cors import CORS
 
-CORS(app)
+#CORS(app)
 #---
 
 
