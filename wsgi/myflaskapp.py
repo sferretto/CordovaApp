@@ -24,7 +24,7 @@ def hello():
 #---
 @app.route("/index.html")
 def hello1():
-    return send_from_directory('/wsgi', 'index.html')
+    return send_from_directory('/wsgi/', 'index.html')
 
 #---
 
