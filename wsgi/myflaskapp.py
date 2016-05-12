@@ -24,8 +24,8 @@ def hello():
 #---
 @app.route("/index.html")
 def hello1():
-    return "--inedx.html-- !"
-    #return send_from_directory('static', 'index.html')
+    #return "--inedx.html-- !"
+    return render_template( 'index.html')
 
 #---
 
