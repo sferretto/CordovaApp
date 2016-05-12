@@ -1,6 +1,7 @@
 from flask import Flask
 
 #---
+import os
 from flask import request, send_from_directory
 from flask import render_template
 from flask import jsonify
@@ -17,7 +18,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello World!"
+    DATA_DIR = os.environ.get('OPENSHIFT_DATA_DIR', ".")
+    return DATA_DIR
 
 
 
