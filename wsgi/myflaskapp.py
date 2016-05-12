@@ -35,12 +35,24 @@ def hello1():
     return render_template( 'index.html')
 
 #---
-'''
-@app.route("/<nomeFile>")
-def trovaFileInTemplate(nomeFile):
+
+@app.route("/alunnoByNumeroReg/", methods=["POST"]) # metodo POST
+def alunnoByNumeroReg():
+    # spedizione in formato POST usando un oggetto JSON
     
-    return render_template( nomeFile)
-'''
+    numeroReg =  request.json['numeroReg']
+    
+    dizAlunno = registroAlunni[int(numeroReg)]
+    
+    #print dizAlunno
+    
+    # in casi piu' complessi usare render_templates e quindi jsonify
+    stringJson = jsonify( ** dizAlunno)   #aggiunge content-type => json
+    
+    #print stringJson
+    
+    return stringJson
+
 
 if __name__ == "__main__":
     app.run(debug=True)
