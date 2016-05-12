@@ -18,8 +18,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    DATA_DIR = os.environ.get('OPENSHIFT_DATA_DIR', ".")
-    return DATA_DIR
+    #DATA_DIR = os.environ.get('OPENSHIFT_DATA_DIR', ".")
+    return 'Hello 2'
 
 
 
