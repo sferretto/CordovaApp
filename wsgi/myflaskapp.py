@@ -15,6 +15,11 @@ from flask import jsonify
 
 app = Flask(__name__)
 
+# simula molto bene un database di dizionari con chiave numerica
+# i dizionari possono anche essere vuoti alla partenza
+registroAlunni = {0:{"numeroReg":0,"nome":"xxxxxxx","cognome":"yyyyyy","annoNascita":"1900"}}
+
+
 
 @app.route("/")
 def hello():
