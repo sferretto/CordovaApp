@@ -30,7 +30,7 @@ def hello1():
     return render_template( 'index.html')
 
 #---
-@app.route("/<nomeFile>")
+@app.route("/static/<nomeFile>")
 def trovaFileInTemplate(nomeFile):
     
     return render_template( nomeFile)
