@@ -24,7 +24,7 @@ registroAlunni = {0:{"numeroReg":0,"nome":"xxxxxxx","cognome":"yyyyyy","annoNasc
 @app.route("/")
 def hello():
     #DATA_DIR = os.environ.get('OPENSHIFT_DATA_DIR', ".")
-    return 'Hello 2'
+    return render_template( 'index.html')
 
 
 
