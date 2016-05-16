@@ -55,4 +55,4 @@ def alunnoByNumeroReg():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=6503)
+    app.run(debug=True, port=65011)
