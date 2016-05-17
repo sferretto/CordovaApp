@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+/* global App */
+
 var APP = {
     /*Returning jQuery Promise For a AJAX call with Product type*/
     // ...
@@ -104,6 +106,25 @@ var APP = {
 
         });
         
+    },
+    init_printDizionario_click: function(){
+        var buttonPrintDiz = $("#leggiDizionario");
+        buttonPrintDiz.on("click", function(){
+            $.ajax(
+                    {
+                        method: "GET",
+                        url: "/leggiDizionario/",
+                        contentType: "application/json",
+                        dataType:"json",
+                        success: function(data){
+                            $("#campoText3-div").html(data.diz);
+                        },
+                        error: function(){
+                            $("#campoText3-div").html("errore");
+                        }
+            });
+        });
+        
     }
 };
 
@@ -118,6 +139,7 @@ $(document).ready(function () {
     APP.init_h3_2_Click();
     APP.init_leggiCampoText1_click();
     APP.init_leggiCampoText2_click();
+    App.init_printDizionario_click();
 });
 
 
