@@ -3,14 +3,14 @@ from flask import Flask
 from flask import Flask,request, send_from_directory
 from flask import render_template
 from flask import jsonify
-from json import dump
+from json import dumps
 #from flask.ext.cors import CORS
 
 
 app = Flask(__name__)
 #CORS(app)
 global registroAlunni
-registroAlunni = {0:{"numeroReg":0,"nome":"ignoto","cognome":"ignoto","annoNascita":"1900"}}
+registroAlunni = {0:{"numeroReg":0,"nome":"ignoto","cognome":"ignoto","annoNascita":"1900"}, 1:{"numeroReg":1,"nome":"ignoto1","cognome":"ignoto1","annoNascita":"1901"}}
 
 @app.route("/")
 def hello():
@@ -68,18 +68,10 @@ def inserisciAlunnoPOST():
     print registroAlunni[int(numeroReg)]
     return jsonify("")
 
-@app.route("/leggiDizionario")
+@app.route("/leggiDizionario/", methods = ["POST"])
 def leggiDizionario():
-    stringa=""
-    for nDizAlunno in registroAlunni:
-        dizAlunno=registroAlunni[nDizAlunno]
-        nDizAlunno = str(nDizAlunno)
-        stringa += nDizAlunno + ":{"
-        for nKey in dizAlunno:
-            key=dizAlunno[nKey]
-            stringa += nKey + ":" + key + ","
-    risposta = {"diz" : stringa}
-    return dumps(risposta)
+    stringa = str(registroAlunni)
+    return stringa
     
 if __name__ == "__main__":
     #app.debug=True

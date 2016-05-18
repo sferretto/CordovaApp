@@ -96,6 +96,7 @@ var APP = {
                         dataType: "json",
                         success:  function(data){
                             alert("ok");
+                            
                         },
                         error: function(){
                             alert("errore");
@@ -107,17 +108,21 @@ var APP = {
         });
         
     },
+    
     init_printDizionario_click: function(){
-        var buttonPrintDiz = $("#leggiDizionario");
-        buttonPrintDiz.on("click", function(){
+        buttonPrintDiz = $('#leggiDizionario');
+        buttonPrintDiz.on('click', function(){
             $.ajax(
                     {
-                        method: "GET",
+                        method: "POST",
                         url: "/leggiDizionario/",
                         contentType: "application/json",
-                        dataType:"json",
+                        crossDomain: true,
+                        type: "json",
+                        //data: JSON.stringify({"":""}),
+                        dataType:"text",
                         success: function(data){
-                            $("#campoText3-div").html(data.diz);
+                            $("#campoText3-div").html(data);
                         },
                         error: function(){
                             $("#campoText3-div").html("errore");
@@ -139,7 +144,7 @@ $(document).ready(function () {
     APP.init_h3_2_Click();
     APP.init_leggiCampoText1_click();
     APP.init_leggiCampoText2_click();
-    App.init_printDizionario_click();
+    APP.init_printDizionario_click();
 });
 
 
