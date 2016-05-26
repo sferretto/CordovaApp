@@ -43,18 +43,18 @@ var APP = {
             contenuto = elementoSelezionato2.val();
             /* chiamata asincrona, non aspetta la fine */
             $.ajax(
-                    {   method: "POST",
-                        url :"/alunnoByNumeroReg/",
+                    {method: "POST",
+                        url: "/alunnoByNumeroReg/",
                         contentType: 'application/json',
-                        crossDomain: true,   
+                        crossDomain: true,
                         type: "json",
                         data: JSON.stringify({"numeroReg": contenuto}),
                         dataType: "json",
                         success: function (data) {
                             contenuto = data.numeroReg + " " +
-                            data.nome + " " +
-                            data.cognome + " " +
-                            data.annoNascita;
+                                    data.nome + " " +
+                                    data.cognome + " " +
+                                    data.annoNascita;
                             // oggetto arrivato json in data
                             elementoSelezionato = $("#campoText1-div");
                             elementoSelezionato.html(contenuto);
@@ -63,55 +63,54 @@ var APP = {
                             elementoSelezionato = $("#campoText1-div");
                             elementoSelezionato.html("errore");
                         }
-               });
+                    });
 
 
 
         });
     },
-    init_leggiCampoText2_click: function (){
+    init_leggiCampoText2_click: function () {
         button = $('#leggiCampoTextRegistrazione');
         button.on('click', function ()
         {
             /* copia dal campotesto */
             el1 = $("#campoTextNumReg");
             numeroReg = el1.val();
-            
+
             el2 = $("#campoTextNome");
             nome = el2.val();
-            
+
             el3 = $("#campoTextCognome");
             cognome = el3.val();
-            
+
             el4 = $("#campoTextAnnoNascita");
             annoNascita = el4.val();
             /* chiamata asincrona, non aspetta la fine */
             $.ajax(
-                    {   method: "POST",
-                        url :"/insertAlunnoPOST/",
+                    {method: "POST",
+                        url: "/insertAlunnoPOST/",
                         contentType: 'application/json',
-                        crossDomain: true,   
+                        crossDomain: true,
                         type: "json",
                         data: JSON.stringify({"numeroReg": numeroReg, "nome": nome, "cognome": cognome, "annoNascita": annoNascita}),
                         dataType: "json",
-                        success:  function(data){
+                        success: function (data) {
                             alert("ok");
-                            
+
                         },
-                        error: function(){
+                        error: function () {
                             alert("errore");
                         }
-               });
+                    });
 
 
 
         });
-        
+
     },
-    
-    init_printDizionario_click: function(){
+    init_printDizionario_click: function () {
         buttonPrintDiz = $('#leggiDizionario');
-        buttonPrintDiz.on('click', function(){
+        buttonPrintDiz.on('click', function () {
             $.ajax(
                     {
                         method: "POST",
@@ -120,16 +119,39 @@ var APP = {
                         crossDomain: true,
                         type: "json",
                         //data: JSON.stringify({"":""}),
-                        dataType:"text",
-                        success: function(data){
+                        dataType: "text",
+                        success: function (data) {
                             $("#campoText3-div").html(data);
                         },
-                        error: function(){
+                        error: function () {
                             $("#campoText3-div").html("errore");
                         }
-            });
+                    });
         });
-        
+
+    },
+    init_coordinate_click: function () {
+        button = $('#inviaCoordinate').on('click', function () {
+            longitude = $('#longitude').val();
+            latitude = $('#latitude').val();
+            date = $('#date').val();
+            $.ajax(
+                    {
+                        method: "POST",
+                        url: "/insertPosition/",
+                        contentType: "application/json",
+                        crossDomain: true,
+                        type: "json",
+                        data: JSON.stringify({"longitude":longitude, "latitude":latitude, "date": date}),
+                        dataType: "json",
+                        success: function (data) {
+                            alert('ok');
+                        },
+                        error: function () {
+                            alert('errore');
+                        }
+                    });
+        });
     }
 };
 
@@ -145,6 +167,7 @@ $(document).ready(function () {
     APP.init_leggiCampoText1_click();
     APP.init_leggiCampoText2_click();
     APP.init_printDizionario_click();
+    APP.init_coordinate_click();
 });
 
 

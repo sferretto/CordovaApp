@@ -11,6 +11,7 @@ app = Flask(__name__)
 #CORS(app)
 global registroAlunni
 registroAlunni = {0:{"numeroReg":0,"nome":"ignoto","cognome":"ignoto","annoNascita":"1900"}, 1:{"numeroReg":1,"nome":"ignoto1","cognome":"ignoto1","annoNascita":"1901"}}
+positions = {}
 
 @app.route("/")
 def hello():
@@ -72,6 +73,19 @@ def inserisciAlunnoPOST():
 def leggiDizionario():
     stringa = str(registroAlunni)
     return stringa
+
+@app.route("/insertPosition/", methods = ["POST"])
+def insertPosition():
+    
+    latitude = request.json['latitude']
+    longitude = request.json['longitude']
+    date = request.json['date']
+    
+    coordinate = {"latitude" : latitude, "longitude" : longitude}
+    
+    positions[date] = coordinate
+    print positions
+    return jsonify("")
     
 if __name__ == "__main__":
     #app.debug=True
