@@ -86,8 +86,18 @@ def insertPosition():
     positions[date] = coordinate
     print positions
     return jsonify("")
+
+@app.route("/readPositions/", methods = ["POST"])
+def readPositions():
+    stringa = str(positions)
+    return stringa
+
+@app.route("/cleanPositions/", methods = ["POST"])
+def cleanPositions():
+    positions = {}
+    return ""
     
 if __name__ == "__main__":
     #app.debug=True
-    app.run(debug=True, port=65013)
+    app.run(debug=True, port=5000)
     #65013
