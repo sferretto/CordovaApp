@@ -147,5 +147,3 @@ $(document).ready(function () {
     APP.init_readPositions_click();
     APP.init_cleanPositions_click();
 });
-
-
