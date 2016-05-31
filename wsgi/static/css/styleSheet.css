@@ -1,6 +1,9 @@
 body{
     text-align: center;
     font-family: Helvetica;
+    background-image: url("cervo.jpg");
+    background-position: center;
+    background-repeat:no-repeat;
 }
 
 button{
@@ -20,12 +23,16 @@ input{
     margin-bottom: 80px;
     margin-right: 80px;
     margin-left: 80px;
-    
+
     border-style: solid;
     border-width: 5px;
     border-radius: 4px;
-    
+
 }
 
 .inputdemoBasicUsage .md-datepicker-button {
-  width: 36px; }
+    width: 36px; }
+
+h1 {
+    color: #0b7cb2;
+}
