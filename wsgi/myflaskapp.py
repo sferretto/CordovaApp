@@ -9,8 +9,6 @@ from json import dumps
 
 app = Flask(__name__)
 #CORS(app)
-global registroAlunni
-registroAlunni = {0:{"numeroReg":0,"nome":"ignoto","cognome":"ignoto","annoNascita":"1900"}, 1:{"numeroReg":1,"nome":"ignoto1","cognome":"ignoto1","annoNascita":"1901"}}
 positions = {}
 
 @app.route("/")
@@ -31,12 +29,12 @@ def cssLoad(nomeFileCss):
    
 
 
-@app.route("/readPositions/", methods = ["POST"])
+@app.route("cordovaapp-sferretto.rhcloud.com", methods = ["POST"])
 def readPositions():
     stringa = str(positions)
     return stringa
 
-@app.route("/cleanPositions/", methods = ["POST"])
+@app.route("cordovaapp-sferretto.rhcloud.com", methods = ["POST"])
 def cleanPositions():
     positions = {}
     return ""
