@@ -4,11 +4,10 @@ from flask import Flask,request, send_from_directory
 from flask import render_template
 from flask import jsonify
 from json import dumps
-#from flask.ext.cors import CORS
+
 
 
 app = Flask(__name__)
-#CORS(app)
 positions = {}
 
 @app.route("/")
@@ -33,6 +32,7 @@ def cssLoad(nomeFileCss):
 def readPositions():
     stringa = str(positions)
     return stringa
+
 
 @app.route("cordovaapp-sferretto.rhcloud.com", methods = ["POST"])
 def cleanPositions():
