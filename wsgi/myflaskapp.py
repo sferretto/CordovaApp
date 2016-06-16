@@ -5,12 +5,11 @@ from flask import jsonify
 
 
 app = Flask(__name__)
-positions = {}
 
 
-@app.route("cordovaapp-sferretto.rhcloud.com", methods = ["POST"])
+
+@app.route("/readPositions/", methods = ["POST"])
 def readPositions():
-    stringa = str(positions)
     return stringa
 
     
